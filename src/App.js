@@ -1,57 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import "./components/fontAwesomeIcons";
+//import { Counter } from "./features/counter/Counter";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./components/header/Header";
+
+import "./App.css";
+import BookCreate from "./components/desk/BookCreate/BookCreate";
+import Desk from "./components/desk/Desk";
+import Assignment from "./components/assignment/Assignment";
+import ExamTime from "./components/examTime/ExamTime";
+import BookDisplay from "./components/desk/BookDisplay/BookDisplay";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route path="/" exact component={Desk} />
+          <Route path="/desk/create" exact component={BookCreate} />
+          <Route path="/desk/display/:id" component={BookDisplay} />
+          <Route path="/assignment" component={Assignment} />
+          <Route path="/exam-time" component={ExamTime} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
